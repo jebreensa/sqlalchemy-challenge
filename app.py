@@ -1,12 +1,20 @@
-import numpy as np
-import os
+from flask import Flask
+from flask import jsonify
 
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, func
+from sqlalchemy.ext.declarative import declarative_base
+Base = declarative_base()
+from sqlalchemy import Column, Integer, String, Float, and_, Date, desc, func
 
-from flask import Flask, jsonify
+import pandas as pd
+import os
+import datetime as dt
+import matplotlib.pyplot as plt
+import numpy as np
+import time
 
 # database setup
 engine = create_engine("sqlite:///Resources/hawaii.sqlite")
